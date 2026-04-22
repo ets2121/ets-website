@@ -31,9 +31,10 @@ const Nav = ({ setCurrentPage }) => {
         borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
       }}
     >
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#00F2FF', fontWeight: 700, fontSize: '1.5rem', fontFamily: 'Montserrat, sans-serif' }} onClick={(e) => { e.preventDefault(); if(setCurrentPage){ setCurrentPage('home'); window.scrollTo(0, 0); } }}>
-          <img src={brandData.logo.default} alt={brandData.logo.altText} style={{ height: '40px', borderRadius: '4px', border: '1px solid rgba(0,242,255,0.3)' }} />
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#00F2FF', fontWeight: 700, fontSize: '1.4rem', fontFamily: 'Montserrat, sans-serif' }} onClick={(e) => { e.preventDefault(); if(setCurrentPage){ setCurrentPage('home'); window.scrollTo(0, 0); } }}>
+          <img src={brandData.logo.default} alt={brandData.logo.altText} style={{ height: '32px', borderRadius: '4px', border: '1px solid rgba(0,242,255,0.3)' }} />
+          <span style={{ letterSpacing: '1px' }}>ETS</span>
         </a>
 
         {/* Desktop Nav */}

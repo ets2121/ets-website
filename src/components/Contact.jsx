@@ -93,8 +93,9 @@ const Contact = ({ setCurrentPage }) => {
             
             {/* Brand Col */}
             <div style={{ flex: '1 1 300px' }}>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <img src={brandData.logo.default} alt={brandData.logo.altText} style={{ borderRadius: '4px', border: '1px solid rgba(0,242,255,0.3)', height: '40px' }} />
+                <span style={{ color: '#00F2FF', fontWeight: 700, fontSize: '1.5rem', fontFamily: 'Montserrat, sans-serif', letterSpacing: '1px' }}>ETS</span>
               </div>
               <p style={{ lineHeight: 1.6, fontSize: '0.95rem' }}>
                 {brandData.companyName}: High-end technology tailored for local businesses. We modernize operations to save you time and maximize profit.
