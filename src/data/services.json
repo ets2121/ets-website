@@ -3,19 +3,19 @@
   "subtitle": "The Engine powering your business transformation.",
   "items": [
     {
-      "title": "Software Development",
+      "title": "Bespoke Web & MVP Development",
       "icon": "Code2",
-      "text": "Bespoke Web Applications & MVPs. We build stunning, scalable tools designed to replace your manual paperwork."
+      "text": "Transform your manual workflows into stunning digital assets. We build custom web applications and MVPs designed to eliminate paperwork, automate tracking, and give you back your time."
     },
     {
-      "title": "Hardware & Prototyping",
+      "title": "Custom Hardware Automation",
       "icon": "Cpu",
-      "text": "Arduino & Microcontroller Solutions. Automating physical processes through custom hardware and smart prototyping."
+      "text": "Bring your physical operations into the digital age. We specialize in Arduino-powered prototypes and microcontroller solutions that automate your environment and bridge the gap between hardware and software."
     },
     {
-      "title": "IT Support & Triage",
+      "title": "IT Support & Consulting",
       "icon": "Wrench",
-      "text": "Professional Tech Consulting. Expert software troubleshooting and driver error resolution before you hit the repair shop."
+      "text": "Your local first responder for technical hurdles. From software diagnostics and driver resolution to long-term system strategy—we provide expert solutions before you spend a fortune at a repair shop."
     }
   ]
 }
