@@ -1,0 +1,39 @@
+{
+  "companyName": "EasyTech Solution",
+  "motto": "Built for the local community, by EasyTech Solution.",
+  "copyrightYear": 2026,
+  "logo": {
+    "default": "/assets/logo/logo.png",
+    "altText": "EasyTech Solution Logo"
+  },
+  "navigation": [
+    {
+      "label": "Services",
+      "link": "#services"
+    },
+    {
+      "label": "Portfolio",
+      "link": "#portfolio"
+    },
+    {
+      "label": "About",
+      "link": "#about"
+    }
+  ],
+  "contact": {
+    "phone": "+639266215136",
+    "email": "easytechsolution.ets@gmail.com",
+    "addressLine1": "Quirino Province",
+    "addressLine2": "Philippines",
+    "businessHours": {
+      "days": "Monday - Sunday",
+      "hours": "7:00 AM - 10:00 PM"
+    }
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/profile.php?id=61564357372548",
+    "linkedin": "#",
+    "instagram": "#",
+    "github": "https://github.com/ets2121"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": "What Our Partners Say",
+  "subtitle": "Client Success",
+  "items": [
+    {
+      "name": "Maria Santos",
+      "role": "Owner, Santos Retail",
+      "text": "The automated inventory system completely transformed how we run our shop. We're saving countless hours every week.",
+      "initial": "M"
+    },
+    {
+      "name": "Juan Dela Cruz",
+      "role": "Manager, Green Farm",
+      "text": "Thanks to the smart farm control, our water usage dropped significantly, and our yield has never been better. Phenomenal work!",
+      "initial": "J"
+    },
+    {
+      "name": "Dr. Elena Reyes",
+      "role": "Director, City Clinic",
+      "text": "Our patients are much happier now that they don't have to wait in a crowded room. The queue system is brilliant.",
+      "initial": "E"
+    },
+    {
+      "name": "Pedro Gomez",
+      "role": "CEO, Gomez Logistics",
+      "text": "Fast, reliable, and exactly what we needed to modernize our fleet tracking. Truly a local IT expert you can trust.",
+      "initial": "P"
+    }
+  ]
+}

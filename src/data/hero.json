@@ -1,0 +1,17 @@
+{
+  "headline": "Modernizing Your Business, One Line of Code at a Time.",
+  "subheadline": "Custom web apps, hardware automation, and local IT triage. We turn manual delays into digital speed for the future of our regional economy.",
+  "primaryCTA": {
+    "text": "Start Your Project",
+    "link": "#contact"
+  },
+  "secondaryCTA": {
+    "text": "View Portfolio",
+    "link": "#portfolio"
+  },
+  "backgroundImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80",
+  "mockupImage": {
+    "url": "/assets/hero/hero_mockup.png",
+    "alt": "Dashboard and Arduino mockup"
+  }
+}

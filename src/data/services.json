@@ -1,0 +1,21 @@
+{
+  "title": "Services",
+  "subtitle": "The Engine powering your business transformation.",
+  "items": [
+    {
+      "title": "Software Development",
+      "icon": "Code2",
+      "text": "Bespoke Web Applications & MVPs. We build stunning, scalable tools designed to replace your manual paperwork."
+    },
+    {
+      "title": "Hardware & Prototyping",
+      "icon": "Cpu",
+      "text": "Arduino & Microcontroller Solutions. Automating physical processes through custom hardware and smart prototyping."
+    },
+    {
+      "title": "IT Support & Triage",
+      "icon": "Wrench",
+      "text": "Professional Tech Consulting. Expert software troubleshooting and driver error resolution before you hit the repair shop."
+    }
+  ]
+}

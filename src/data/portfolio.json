@@ -1,0 +1,27 @@
+{
+  "title": "Portfolio",
+  "subtitle": "Proof of our technological impact—real results for real clients.",
+  "items": [
+    {
+      "title": "Automated Inventory System",
+      "problem": "Shop X was using inaccurate paper logs.",
+      "solution": "Built a custom inventory dashboard.",
+      "result": "Saved 10 hours a week.",
+      "image": "/assets/portfolio_software.png"
+    },
+    {
+      "title": "IoT Smart Farm Control",
+      "problem": "Manual watering cost time and water resources.",
+      "solution": "Designed an automated sensor & pump system.",
+      "result": "Reduced water usage by 30%.",
+      "image": "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "Clinic Queue Management",
+      "problem": "Patients waited hours in crowded waiting rooms.",
+      "solution": "Created an SMS queue notification system.",
+      "result": "Improved patient satisfaction by 80%.",
+      "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}

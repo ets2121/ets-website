@@ -1,0 +1,40 @@
+{
+  "image": "/assets/profile/profile-main.png",
+  "altText": "Founder Portrait",
+  "badgeText": "About the Founder",
+  "headline": "Your Local IT Expert",
+  "paragraphs": [
+    "My \"Why\" is simple: I want to see our local community modernize and thrive. As a local IT expert, I noticed businesses struggling with outdated manual processes and wanted to bridge that gap. We offer tailored tech solutions right here at home.",
+    "When you work with me, you aren't just hiring a faceless remote contractor—you're partnering with a neighbor who truly cares about the growth of your business and our local economy."
+  ],
+  "stack": [
+    {
+      "name": "Next.js",
+      "path": "/assets/icon/Next.js.svg"
+    },
+    {
+      "name": "React",
+      "path": "/assets/icon/React.svg"
+    },
+    {
+      "name": "Node.js",
+      "path": "/assets/icon/Node.js.svg"
+    },
+    {
+      "name": "PHP",
+      "path": "/assets/icon/PHP.svg"
+    },
+    {
+      "name": "Laravel",
+      "path": "/assets/icon/Laravel.svg"
+    },
+    {
+      "name": "Python",
+      "path": "/assets/icon/Python.svg"
+    },
+    {
+      "name": "MySQL",
+      "path": "/assets/icon/MySQL.svg"
+    }
+  ]
+}
