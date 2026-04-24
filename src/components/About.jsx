@@ -60,42 +60,38 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Image Side with Fancy Shape */}
+          {/* Image Side with 3D Frame */}
           <motion.div 
             style={{ y: imageY }}
-            initial={{ opacity: 0, rotate: 5, scale: 0.9 }}
-            whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative lg:order-last order-first mb-12 lg:mb-0"
+            className="relative lg:order-last order-first mb-12 lg:mb-0 perspective-1000"
           >
+            {/* 3D Floating Frame */}
             <motion.div 
-              className="relative overflow-hidden p-2 bg-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
-              animate={{ 
-                clipPath: [
-                  "polygon(15% 0, 100% 5%, 85% 100%, 0 95%)",
-                  "polygon(5% 10%, 95% 0, 100% 90%, 10% 100%)",
-                  "polygon(15% 0, 100% 5%, 85% 100%, 0 95%)"
-                ]
-              }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="relative p-2 rounded-[2rem] group"
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <img 
-                src={aboutData.image} 
-                alt={aboutData.altText} 
-                className="w-full aspect-square object-cover"
-              />
-            </motion.div>
-            
-            <motion.div 
-              className="absolute -bottom-4 -right-4 sm:bottom-8 sm:-right-4 p-5 obsidian-glass border-accent/40 shadow-2xl z-20 flex flex-col items-center min-w-[120px]"
-              initial={{ x: 30, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <p className="text-accent font-extrabold text-4xl leading-none">5+</p>
-              <p className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center mt-1">Years of <br />Engineering</p>
+              {/* Outer Cyber Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-accent via-accent/5 to-accent/40 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"></div>
+              
+              {/* Perspective Container */}
+              <motion.div 
+                className="relative bg-surface rounded-3xl overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+                whileHover={{ rotateX: 8, rotateY: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <img 
+                  src={aboutData.image} 
+                  alt={aboutData.altText} 
+                  className="w-full aspect-square object-cover object-top scale-105"
+                  style={{ transform: "translateZ(50px)" }}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
 
