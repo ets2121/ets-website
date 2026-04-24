@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import brandData from '../data/brand.json';
 
 const Nav = ({ setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,89 +21,140 @@ const Nav = ({ setCurrentPage }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLinkClick = (e, link, isInternal = false) => {
+    if (isInternal) {
+      e.preventDefault();
+      setCurrentPage('home');
+      setIsOpen(false);
+      setTimeout(() => {
+        const element = document.querySelector(link);
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 0);
+    } else if (link === '#') {
+      e.preventDefault();
+      setCurrentPage('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      style={{
-        position: 'fixed',
-        top: 0,
-        width: '100%',
-        zIndex: 50,
-        transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(11, 28, 56, 0.9)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-      }}
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
+        scrolled 
+          ? 'py-3 backdrop-blur-2xl bg-primary-bg/90 shadow-2xl border-b border-accent/10' 
+          : 'py-6 bg-transparent border-b border-transparent'
+      }`}
     >
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#00F2FF', fontWeight: 700, fontSize: '1.4rem', fontFamily: 'Montserrat, sans-serif' }} onClick={(e) => { e.preventDefault(); if(setCurrentPage){ setCurrentPage('home'); window.scrollTo(0, 0); } }}>
-          <img src={brandData.logo.default} alt={brandData.logo.altText} style={{ height: '32px', borderRadius: '4px', border: '1px solid rgba(0,242,255,0.3)' }} />
-          <span style={{ letterSpacing: '1px' }}>ETS</span>
-        </a>
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-[2px] z-[1001]"
+        style={{ scaleX, transformOrigin: "0%", background: 'var(--accent)', width: '100%' }}
+      />
+
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        
+        {/* Logo */}
+        <motion.div 
+          onClick={() => { setCurrentPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          className="flex items-center gap-3 cursor-pointer"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <img 
+            src={brandData.logo.default} 
+            alt={brandData.logo.altText} 
+            className={`w-auto rounded-lg transition-all duration-500 ${
+              scrolled ? 'h-9 border border-accent/20' : 'h-11 border border-white/10'
+            }`}
+          />
+          <span className="text-xl font-bold text-white font-space uppercase tracking-tight ">
+            ETS
+          </span>
+        </motion.div>
 
         {/* Desktop Nav */}
-        <nav style={{ display: 'none' }} className="desktop-nav">
-          <ul style={{ display: 'flex', listStyle: 'none', gap: '2rem', alignItems: 'center', margin: 0 }}>
-            {brandData.navigation.map((item, idx) => (
-              <li key={idx}>
-                <a 
-                  href={item.link} 
-                  style={{ fontWeight: 500, transition: 'color 0.3s' }} 
-                  onClick={() => setCurrentPage && setCurrentPage('home')}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-            <li><a href="#contact" className="btn btn-primary pulse" onClick={() => setCurrentPage && setCurrentPage('home')}>Get a Free Quote</a></li>
-          </ul>
-        </nav>
+        <div className="hidden md:flex items-center gap-10">
+          {brandData.navigation.map((item, idx) => (
+            <a 
+              key={idx} 
+              href={item.link} 
+              className="relative font-space font-medium text-sm text-on-surface-variant hover:text-accent transition-all duration-300 group"
+              onClick={(e) => handleLinkClick(e, item.link, item.link.startsWith('#'))}
+            >
+              {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:width-full"></span>
+            </a>
+          ))}
+          <motion.a 
+            href="#contact" 
+            className="btn btn-primary px-6 py-2.5 rounded-xl text-sm"
+            onClick={(e) => handleLinkClick(e, '#contact', true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Start Project
+          </motion.a>
+        </div>
 
-        {/* Mobile Toggle */}
-        <button className="mobile-toggle" style={{ display: 'none', color: '#fff', background: 'transparent' }} onClick={() => setIsOpen(!isOpen)}>
+        {/* Mobile Toggle Button */}
+        <motion.button 
+          className="md:hidden text-accent p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        </motion.button>
+
       </div>
 
-      {/* Mobile Nav */}
-      <motion.div 
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-        style={{ overflow: 'hidden', background: 'rgba(11, 28, 56, 0.85)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', borderBottom: isOpen ? '1px solid rgba(255, 255, 255, 0.05)' : 'none' }}
-      >
-        <ul style={{ display: 'flex', flexDirection: 'column', listStyle: 'none', padding: isOpen ? '1rem 0' : 0, margin: 0 }}>
-          {brandData.navigation.map((item, idx) => (
-            <li key={idx}>
-              <a 
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.4, cubicBezier: [0.22, 1, 0.36, 1] }}
+            className="fixed top-20 left-4 right-4 p-10 z-[999] bg-primary-bg/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_50px_100px_rgba(0,0,0,0.7)] flex flex-col items-center gap-8"
+          >
+            {brandData.navigation.map((item, idx) => (
+              <motion.a 
+                key={idx} 
                 href={item.link} 
-                style={{ display: 'block', padding: '1rem 2rem', fontSize: '1.2rem', color: '#FFF', fontWeight: 500 }} 
-                onClick={() => { setIsOpen(false); setCurrentPage && setCurrentPage('home'); }}
+                className="text-2xl font-semibold text-on-surface hover:text-accent"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                onClick={(e) => handleLinkClick(e, item.link, item.link.startsWith('#'))}
               >
                 {item.label}
-              </a>
-            </li>
-          ))}
-          <li style={{ padding: '1rem 2rem' }}>
-            <a href="#contact" className="btn btn-primary pulse" style={{ display: 'flex', width: '100%', textAlign: 'center', padding: '1.2rem' }} onClick={() => { setIsOpen(false); setCurrentPage && setCurrentPage('home'); }}>Get a Free Quote</a>
-          </li>
-        </ul>
-      </motion.div>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .desktop-nav { display: flex !important; }
-          .mobile-toggle { display: none !important; }
-        }
-        @media (max-width: 767px) {
-          .desktop-nav { display: none !important; }
-          .mobile-toggle { display: block !important; }
-        }
-        .desktop-nav a:hover { color: #00F2FF; }
-      `}</style>
-    </motion.header>
+              </motion.a>
+            ))}
+            <motion.a 
+              href="#contact" 
+              className="btn btn-primary w-full py-5 rounded-2xl text-lg mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              onClick={(e) => handleLinkClick(e, '#contact', true)}
+            >
+              Start Project
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 
 export default Nav;
+
+
+

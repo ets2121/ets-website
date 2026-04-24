@@ -5,80 +5,67 @@ import testimonialsData from '../data/testimonials.json';
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section-padding" style={{ background: '#0B1C38', color: '#FFF', overflow: 'hidden' }}>
-      <div className="container" style={{ textAlign: 'center' }}>
+    <section id="testimonials" className="py-24 overflow-hidden">
+      <div className="container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '4rem' }}
+          className="mb-16"
         >
-          <span style={{ color: '#00F2FF', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase' }}>{testimonialsData.subtitle}</span>
-          <h2 style={{ fontSize: '2.5rem', marginTop: '0.5rem', marginBottom: '1rem' }}>{testimonialsData.title}</h2>
+          <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm">{testimonialsData.subtitle}</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl md:text-5xl">{testimonialsData.title}</h2>
         </motion.div>
       </div>
 
       {/* Auto-scroll Container */}
-      <div style={{ position: 'relative', display: 'flex', overflow: 'hidden', paddingBottom: '2rem' }}>
+      <div className="relative flex overflow-hidden pb-8">
         <style>
           {`
             @keyframes marquee {
               0% { transform: translateX(0); }
-              100% { transform: translateX(calc(-350px * 4 - 2rem * 4)); } 
+              100% { transform: translateX(calc(-380px * 4 - 2rem * 4)); } 
             }
             .testimonial-track {
               display: flex;
               gap: 2rem;
               width: max-content;
-              animation: marquee 30s linear infinite;
+              animation: marquee 40s linear infinite;
             }
             .testimonial-track:hover {
               animation-play-state: paused;
             }
-            .testimonial-card {
-              width: 350px;
-              background: rgba(255, 255, 255, 0.05);
-              border: 1px solid rgba(255, 255, 255, 0.1);
-              padding: 2rem;
-              border-radius: 12px;
-              display: flex;
-              flex-direction: column;
-              backdrop-filter: blur(10px);
-            }
             @media (max-width: 600px) {
-              .testimonial-card {
-                width: 280px;
-                padding: 1.5rem;
-              }
               @keyframes marquee {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-280px * 4 - 2rem * 4)); } 
+                100% { transform: translateX(calc(-300px * 4 - 2rem * 4)); } 
               }
             }
           `}
         </style>
         
         <div className="testimonial-track">
-          {testimonialsData.items.map((test, idx) => (
-            <div className="testimonial-card" key={idx}>
-              <div style={{ color: '#F6E05E', display: 'flex', marginBottom: '1rem', gap: '4px' }}>
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
+          {[...testimonialsData.items, ...testimonialsData.items].map((test, idx) => (
+            <div 
+              key={idx}
+              className="w-[300px] sm:w-[380px] p-6 sm:p-10 flex flex-col obsidian-glass border-white/5"
+            >
+              <div className="flex gap-1 mb-6 text-accent">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} fill="currentColor" />
+                ))}
               </div>
-              <p style={{ color: '#B0C4DE', fontSize: '1.05rem', lineHeight: 1.6, flexGrow: 1, marginBottom: '1.5rem', fontStyle: 'italic' }}>
+              <p className="text-on-surface-variant leading-relaxed mb-8 flex-grow italic text-base sm:text-lg">
                 "{test.text}"
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem' }}>
-                <div style={{ width: '40px', height: '40px', background: '#00F2FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0B1C38', fontWeight: 'bold' }}>
+              <div className="flex items-center gap-4 pt-6 border-t border-white/10">
+                <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-primary-bg font-extrabold text-lg">
                   {test.initial}
                 </div>
                 <div>
-                  <h4 style={{ margin: 0, fontSize: '1rem' }}>{test.name}</h4>
-                  <span style={{ color: '#00F2FF', fontSize: '0.85rem' }}>{test.role}</span>
+                  <h4 className="text-white font-bold text-base m-0">{test.name}</h4>
+                  <span className="text-accent text-xs font-bold uppercase tracking-wider">{test.role}</span>
                 </div>
               </div>
             </div>

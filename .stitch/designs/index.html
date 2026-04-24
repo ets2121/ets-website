@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyTech Solutions | Engineering the Atmosphere</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#000d27",
+                        "inverse-on-surface": "#21304d",
+                        "on-secondary-container": "#a6b5da",
+                        "on-primary-container": "#006a71",
+                        "primary-fixed": "#74f5ff",
+                        "tertiary-container": "#c9ddf8",
+                        "primary-container": "#00f2ff",
+                        "tertiary-fixed": "#d0e4ff",
+                        "secondary": "#b8c6ed",
+                        "on-tertiary-container": "#4e6178",
+                        "on-primary-fixed": "#002022",
+                        "surface-bright": "#2a3956",
+                        "inverse-surface": "#d7e2ff",
+                        "secondary-container": "#384666",
+                        "on-tertiary-fixed-variant": "#35485e",
+                        "outline-variant": "#3a494b",
+                        "on-tertiary": "#1e3246",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d7e2ff",
+                        "surface-tint": "#00dbe7",
+                        "surface-container": "#0f1f3b",
+                        "surface-container-highest": "#253552",
+                        "on-secondary-fixed-variant": "#384666",
+                        "outline": "#849495",
+                        "tertiary-fixed-dim": "#b4c8e2",
+                        "on-primary": "#00363a",
+                        "background": "#02132e",
+                        "surface-dim": "#02132e",
+                        "surface-container-low": "#0a1b37",
+                        "primary-fixed-dim": "#00dbe7",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-secondary": "#21304f",
+                        "surface-container-high": "#1a2a46",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error": "#690005",
+                        "tertiary": "#f5f8ff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#0b1b38",
+                        "secondary-fixed-dim": "#b8c6ed",
+                        "surface-variant": "#253552",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#00696f",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary-fixed": "#071d30",
+                        "on-background": "#d7e2ff",
+                        "primary": "#e1fdff",
+                        "surface": "#02132e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #02132e;
+            color: #d7e2ff;
+            font-family: 'Manrope', sans-serif;
+        }
+        .cyber-glow {
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .obsidian-glass {
+            background: rgba(37, 53, 82, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(58, 73, 75, 0.15);
+        }
+        .headline-tracking {
+            letter-spacing: -0.02em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="selection:bg-primary-container selection:text-on-primary">
+<!-- TopAppBar -->
+<nav class="sticky top-0 z-50 w-full bg-[#02132e]/80 backdrop-blur-xl bg-gradient-to-b from-[#0a1b37] to-transparent shadow-[0_8px_32px_rgba(0,219,231,0.05)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00f2ff]" style="font-variation-settings: 'FILL' 1;">api</span>
+<span class="text-2xl font-bold text-white tracking-tighter font-['Space_Grotesk']">ETS Portfolio</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-['Space_Grotesk']">
+<a class="text-[#b9cacb] hover:text-white transition-colors" href="#">Services</a>
+<a class="text-[#00f2ff] font-bold border-b-2 border-[#00f2ff] pb-1" href="#">Portfolio</a>
+<a class="text-[#b9cacb] hover:text-white transition-colors" href="#">Testimonials</a>
+<a class="text-[#b9cacb] hover:text-white transition-colors" href="#">About</a>
+</div>
+<button class="bg-primary-container text-on-primary font-bold px-6 py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(0,242,255,0.4)] active:scale-95 transition-all duration-200">
+                Contact Us
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex items-center overflow-hidden px-8">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(0,219,231,0.08)_0%,_transparent_50%)]"></div>
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+<div class="space-y-8">
+<h1 class="text-6xl md:text-7xl font-bold text-white leading-[1.1] headline-tracking font-headline">
+                        Stop Wrestling with <span class="text-primary-container">Manual Processes.</span> Start Scaling.
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        We turn manual delays into digital speed. From custom web apps to hardware automation, we build the simple, efficient tools your business needs to grow.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary-container text-on-primary font-bold px-8 py-4 rounded-lg hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] active:scale-95 transition-all">
+                            Get Your Free Consultation
+                        </button>
+<button class="ghost-border border border-outline/30 text-primary-container font-bold px-8 py-4 rounded-lg hover:bg-primary-container/5 transition-all">
+                            See Our Solutions
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary-container/10 blur-3xl rounded-full group-hover:bg-primary-container/20 transition-all duration-700"></div>
+<div class="relative obsidian-glass rounded-2xl p-4 ghost-border">
+<img alt="Technology visualization" class="w-full h-auto rounded-xl object-cover shadow-2xl" data-alt="high-tech futuristic circuit board with glowing neon cyan traces and atmospheric blue lighting on dark obsidian background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLZc9khNtni9NVS8UB-4LxkoZE0Fp_Nd8aXYkOZS_YCgicXgpp-kn_VP0ONglz2YwIa8Kykua2ttPEB1QflIqH0Ig0Cld2ykXlzolxk1_Y8AgurK906SKCWtR-vOyiCMwbIQ_gELmvS9MM1VsRE_hpbG7Ho2vGY23M_IKGXLKox1dmJFhPQBJj2DWOYnLPJ6WKZhAvaN7378v7qyd3uUULDYwGm3v1e4VsPnctgf7399mHEoqktNWu9Uh3JTHx-sGBuASJEWcXeuo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="py-24 bg-surface-container-low relative">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<span class="text-primary-container font-bold tracking-[0.2em] uppercase text-sm">Services</span>
+<h2 class="text-4xl md:text-5xl font-bold text-white mt-4 font-headline">The Engine powering your business transformation.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Service 1 -->
+<div class="obsidian-glass p-8 rounded-2xl ghost-border hover:bg-surface-container-highest transition-all group">
+<div class="w-14 h-14 rounded-xl bg-primary-container/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-3xl">developer_mode</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline">Bespoke Web &amp; MVP Development</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Scalable, high-performance web applications built to validate your ideas and automate complex user journeys.
+                        </p>
+</div>
+<!-- Service 2 -->
+<div class="obsidian-glass p-8 rounded-2xl ghost-border hover:bg-surface-container-highest transition-all group">
+<div class="w-14 h-14 rounded-xl bg-primary-container/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-3xl">settings_input_component</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline">Custom Hardware Automation</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Bridging the gap between software and the physical world with custom IoT sensors and mechanical automation.
+                        </p>
+</div>
+<!-- Service 3 -->
+<div class="obsidian-glass p-8 rounded-2xl ghost-border hover:bg-surface-container-highest transition-all group">
+<div class="w-14 h-14 rounded-xl bg-primary-container/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-3xl">engineering</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline">IT Support &amp; Consulting</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Strategic technical guidance and robust support frameworks to ensure your infrastructure evolves with your growth.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Bento Grid -->
+<section class="py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<span class="text-primary-container font-bold tracking-[0.2em] uppercase text-sm">Portfolio</span>
+<h2 class="text-4xl md:text-5xl font-bold text-white mt-4 font-headline">Proof of our technological impact.</h2>
+</div>
+<button class="text-primary-container font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                        View Case Studies <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[700px]">
+<!-- Project 1: Large -->
+<div class="md:col-span-8 relative overflow-hidden rounded-2xl group obsidian-glass ghost-border">
+<img alt="Inventory System" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Modern logistics warehouse with automated robots and digital interface overlay in cool blue and cyan tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpuYRRbF8CW6J8Ud_eEVV7v-70kmnT50KXlmanEyBpV4OhqzacawewyXzXSXaKyehfpGAvAG1YmfpTI8ddBB9Y6jbzrlmssfCvk9loZ_5MvBlyky5W2FS9eTDQQDVrI_11q0ZhuXNDFio4pYmTSEBOkGCNVWtop9iCtB4a6oyyemOdI4bU29kQMZ6FGWm5YreKJAulmHjvh7_894VJSY6oUCAeyZ9F9wIOCPBVPAKa1BsZfNF7gYekaNhSgmj79JYsQG1zfXq6au8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex gap-2 mb-4">
+<span class="bg-primary-container/10 text-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Efficiency</span>
+<span class="bg-primary-container/10 text-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Web App</span>
+</div>
+<h3 class="text-3xl font-bold text-white mb-2 font-headline">Automated Inventory System</h3>
+<p class="text-on-surface-variant max-w-lg mb-6">
+<strong class="text-white">Solution:</strong> Custom dashboard with real-time sensor integration. <br/>
+<strong class="text-white">Result:</strong> 45% reduction in manual tracking errors.
+                            </p>
+</div>
+</div>
+<!-- Project 2: Tall -->
+<div class="md:col-span-4 relative overflow-hidden rounded-2xl group obsidian-glass ghost-border">
+<img alt="Smart Farm" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Smart greenhouse interior with glowing sensors and digital controls on a dark, high-tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr_FisL-VIqkcSzukBEGzgX2MzUOIfi5x8QyrZ84sARZD0Ci2q9zC8G48xNnJgWL0TSTSbVjePxGyMGeEkc86JBHjadOd0X6DT5gH-MLwXjoweIgmggW76UWQ_SggOH8wHzqhSRfQxsT0YGt49S6YeiS1FTEMG05B6paJbI8dLlL9nT2WubMLnI6-ftsJKeOE_nWKLSG8AJFNncLlMWzJjYUDFIarxRMwLW9EKYPymVN5XZaBO911RgOqV0v3mLPlMjUuSHLZup5w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="text-2xl font-bold text-white mb-2 font-headline">IoT Smart Farm Control</h3>
+<p class="text-on-surface-variant mb-4">
+                                Precise environmental automation for maximum yield.
+                            </p>
+<span class="text-primary-container font-bold">2.5x Yield Increase</span>
+</div>
+</div>
+<!-- Project 3: Bottom Full -->
+<div class="md:col-span-12 relative overflow-hidden rounded-2xl group obsidian-glass ghost-border h-64 md:h-auto">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10"></div>
+<img alt="Clinic Management" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" data-alt="Modern medical clinic waiting area with digital signage and minimalist high-tech interior design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1j8lgLe5KcuRoK1sir5tcgFm4bBfeUpAz2QR5Gep4WH80xADa_iN8N9y3u0HlH1PEvqSv4CdUAfnoO5TXtAXuutHlsSZ1XsDns1A8If_Rf4UFrIOaTDWIkFIjYJcweUKRRr73dBxMOTtN6lpUUONWa70f2PROdZs0V3nwpXtZXlCGS3bnWmLx75s3d_7JGKroxSRBW25auWMrxb5wWO7ryvJOaRljFczhwTxt6B92x7CrAn7i_TcnZveGCJ7drsH3oCW32-8CoKo"/>
+<div class="relative z-20 p-8 flex flex-col justify-center h-full">
+<h3 class="text-2xl font-bold text-white mb-2 font-headline">Clinic Queue Management</h3>
+<p class="text-on-surface-variant max-w-2xl">
+                                Intelligent patient flow optimization with mobile notifications and real-time analytics.
+                                <br/><span class="text-primary-container font-bold mt-2 inline-block">Wait Times Reduced by 60%</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-white font-headline">Trusted by Industry Leaders</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="obsidian-glass p-10 rounded-2xl ghost-border relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-primary-container/20 text-6xl">format_quote</span>
+<p class="text-lg text-white mb-8 italic leading-relaxed">
+                            "ETS didn't just build a software; they understood our business friction points and solved them with elegant automation. Our ROI was evident within months."
+                        </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident business executive in professional attire with neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzgzCcGrjy4eOeyFiqR5D2mr1uwATm9DTEfm0jB-lRtp4Itjl8oMuc1OoBQf7vSXFqv06RZj5G4ACuPNOKv0iHdLvpe2JSWYP-bvdnvGyYr-2J3rHyV4Krk-RYF1FVaAIzae2C76f3TIG2hZS3Hmh0Oxd8Vl2Sw8OigR3Z5r_JennRhl6Agftb9g8vDUg44bung2Lmufgylr7DFS4uvhdSA5DSWyEKcznRr9XvRL-CF4j7oIaV9kpyVrB5j-NN4hTxGr82A2945Lc"/>
+</div>
+<div>
+<h4 class="font-bold text-white">David Chen</h4>
+<p class="text-on-surface-variant text-sm">CEO, Nexus Logistics</p>
+</div>
+</div>
+</div>
+<div class="obsidian-glass p-10 rounded-2xl ghost-border relative">
+<span class="material-symbols-outlined absolute top-8 right-8 text-primary-container/20 text-6xl">format_quote</span>
+<p class="text-lg text-white mb-8 italic leading-relaxed">
+                            "The bridge between our manual greenhouse controls and their IoT solution has completely transformed how we operate. High-end tech with a local touch."
+                        </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional woman in corporate attire smiling warmly in modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCme1AYRh9y7sh4kACInzQmZuySNc9V7KB8A7r4KEDo_KWJo_VBLIRTfJ7PKLVgyhqmATFVjQ0zz0IJRhslVibQ4zyOHPzExiTXpUinf3ODegow2nNewhlN9WcJeCfvQPEz6LnztCspgtLafv_5ThZCNZwG9xCcCqm9zFU3e0Q8EEFybuO8bovd3PtArto7CxciG7fKfFPYZTXfCs4Chsfo-xhZDp0lrj9SuBkAsx7SqokIO7yzyIvIfjQnfC7ucpms59Cyob3HCo0"/>
+</div>
+<div>
+<h4 class="font-bold text-white">Sarah Jenkins</h4>
+<p class="text-on-surface-variant text-sm">Operations Director, GreenLeaf Co.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 px-8 relative overflow-hidden">
+<div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-container/5 blur-[120px] rounded-full"></div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<span class="text-primary-container font-bold tracking-[0.2em] uppercase text-sm">About EasyTech</span>
+<h2 class="text-4xl md:text-5xl font-bold text-white mt-4 font-headline mb-8">Premium technical agency with a focus on local growth.</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        We are a specialized team of engineers and designers dedicated to modernizing established businesses. By combining cutting-edge software with tailored hardware, we build the foundations for the next generation of industry leaders.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<div class="px-6 py-3 obsidian-glass ghost-border rounded-xl flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-white font-bold">React &amp; Node.js</span>
+</div>
+<div class="px-6 py-3 obsidian-glass ghost-border rounded-xl flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-white font-bold">Arduino &amp; IoT</span>
+</div>
+<div class="px-6 py-3 obsidian-glass ghost-border rounded-xl flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-white font-bold">PostgreSQL</span>
+</div>
+<div class="px-6 py-3 obsidian-glass ghost-border rounded-xl flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-white font-bold">AWS Cloud</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="h-64 rounded-2xl overflow-hidden obsidian-glass ghost-border">
+<img class="w-full h-full object-cover" data-alt="team of software engineers collaborating around a large monitor in a dimly lit dark-themed modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMA9QoYdxFjVVUyFThOT3J4n7O0spGmy1qeOneSRrtdW1e_TJFYTlWALp3y__QlFEqJDPcXVwh139bUq1hYJW8QZO7zM2MVrJ5mXwY81U-CDReLbS8gQTomatha78BzGCYhbjEM8vyR6SqdkR5SfWTjo4R9v6dJjrCqFuwFwwxXbsvBp3f5c7yaKh9dhbOxOSRWHURMK1B9aL9guxUOpppzhnJ_ngO6psAI4PDBQnccLXh_i4-sav3arSd4fLgY7_veUYsPMzEFEk"/>
+</div>
+<div class="h-48 rounded-2xl overflow-hidden obsidian-glass ghost-border">
+<img class="w-full h-full object-cover" data-alt="close up of sophisticated server hardware with blue LED lights in a dark data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnO3FEcgSMt0mCCSIEho9zFIcR0wjOemh1zZ8e2Mhp_oGe6s_rqb4c5iwpKX8EYGYy15FsjyZzmxBFGyRzTJE2bSk9jV9xsydLn-5ghabs1csS5uciQIXAY2BX7E2dyNxt3Jg5CCkZ6711Ip82yRq4tyidcQ32uoYzHbHI5K0sEZrpvn7E7T5iIWb6VO0iRtq0X5I2rEvVh45zdJHTq4-JtLzCLaInAb23ELikGwGNd6fcqv0eXjGheGXPNZSvmJRwqCLIgeDjID0"/>
+</div>
+</div>
+<div class="space-y-4 pt-12">
+<div class="h-48 rounded-2xl overflow-hidden obsidian-glass ghost-border">
+<img class="w-full h-full object-cover" data-alt="modern industrial control panel with digital displays and glowing indicator lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL2qY5Sa5IypNU2PgkRcJqiibOVFTrjOYrw6_987e8_dg8CT3_ol_vo0_ZvvU2I8bmyV2XKEou-mVmRRH7TyYphITmlsTQh-S3eo_g3ivHkk5XXkzHB9asBuGQMq-07KMuDpNGX-kKkG9ewUwtxgwTJjNVkUEJNDe655AbFNngGXL1yNN1R54wWWl1ZYCeBpqsBO26Pr4JqE73z7-JTq8Fy-4F2lEYcChOCOgaiXc9KSq-UEMoP28N8XURZqikrrxrZ24JQmsDAAg"/>
+</div>
+<div class="h-64 rounded-2xl overflow-hidden obsidian-glass ghost-border">
+<img class="w-full h-full object-cover" data-alt="detailed macro shot of clean code on a monitor with soft blue and cyan reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT0hQz0ruyMQjooIBGs0h9Uiz10lj1X32FPEu_YL5mGKDBhHnY46kz1HEiPfOBXe3Lk1Du_fJoVmJxPeP9dXaipkI7aLj98opDH4TGupftwB_mERVNiinsW0JHB8L4PJ1ky_fiEyR1cp8b2EBJW4N4YYbNPygrMpx66JuGfPD0YdwldJQasbYuEMOP3pHtln_pN4N3jqje_3WuRK-rcghc2twzdLRKW5EryPdSQN2-eAaGiWVJucvjM1D5m3_bYW4TfGksSVrq7N4"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#02132e] w-full pt-16 pb-8 border-t border-[#3a494b]/15">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00f2ff]">api</span>
+<span class="text-lg font-bold text-white font-headline">ETS Portfolio</span>
+</div>
+<p class="font-['Manrope'] text-sm text-[#b9cacb] max-w-sm leading-relaxed">
+                    Engineering the Atmosphere of modern business through relentless innovation and technical precision.
+                </p>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-8 mb-8">
+<a class="font-['Manrope'] text-sm text-[#b9cacb] hover:text-[#00f2ff] transition-colors" href="#">Services</a>
+<a class="font-['Manrope'] text-sm text-[#b9cacb] hover:text-[#00f2ff] transition-colors" href="#">Portfolio</a>
+<a class="font-['Manrope'] text-sm text-[#b9cacb] hover:text-[#00f2ff] transition-colors" href="#">About</a>
+<a class="font-['Manrope'] text-sm text-[#b9cacb] hover:text-[#00f2ff] transition-colors" href="#">Privacy</a>
+</div>
+<p class="font-['Manrope'] text-sm text-[#b9cacb]">
+                    © 2024 EasyTech Solutions. Engineering the Atmosphere.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

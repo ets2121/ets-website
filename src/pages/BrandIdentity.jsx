@@ -9,70 +9,74 @@ const BrandIdentity = () => {
   }, []);
 
   return (
-    <div style={{ paddingTop: '100px', paddingBottom: '100px', minHeight: '100dvh' }}>
-      <div className="container" style={{ maxWidth: '800px' }}>
+    <div className="pt-32 pb-24 min-h-dvh bg-primary-bg">
+      <div className="container mx-auto px-6 max-w-4xl">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 style={{ fontSize: '3rem', marginBottom: '3rem', textAlign: 'center', background: 'linear-gradient(90deg, #FFFFFF 0%, #00F2FF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h1 className="text-4xl sm:text-6xl font-bold mb-16 text-center bg-gradient-to-r from-white to-accent bg-clip-text text-transparent py-2">
             Strategic Brand Identity
           </h1>
 
           {/* Exec Summary */}
-          <section style={{ marginBottom: '4rem', background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-6 border-b border-accent/20 pb-4">
               1. {brandIdentityData.executiveSummary.title}
             </h2>
-            <p style={{ color: '#E2E8F0', fontSize: '1.1rem', lineHeight: 1.8 }}>
+            <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed">
               {brandIdentityData.executiveSummary.content}
             </p>
           </section>
 
           {/* Core Purpose */}
-          <section style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-8 border-b border-accent/20 pb-4">
               2. {brandIdentityData.corePurpose.title}
             </h2>
             
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ color: '#FFF', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Mission Statement</h3>
-              <p style={{ color: '#B0C4DE', fontStyle: 'italic', borderLeft: '4px solid #00F2FF', paddingLeft: '1rem', margin: 0 }}>
+            <div className="mb-8 p-6 bg-accent/5 border-l-4 border-accent rounded-r-xl">
+              <h3 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                <span className="text-accent text-xs">//</span> Mission Statement
+              </h3>
+              <p className="text-accent font-italic text-base sm:text-lg italic leading-relaxed">
                 "{brandIdentityData.corePurpose.mission}"
               </p>
             </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ color: '#FFF', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Primary Objective</h3>
-              <p style={{ color: '#E2E8F0', margin: 0 }}>
-                {brandIdentityData.corePurpose.objective}
-              </p>
-            </div>
+            <div className="grid sm:grid-cols-2 gap-8">
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
+                <h3 className="text-white font-bold text-lg mb-2">Primary Objective</h3>
+                <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed">
+                  {brandIdentityData.corePurpose.objective}
+                </p>
+              </div>
 
-            <div>
-              <h3 style={{ color: '#FFF', fontSize: '1.2rem', marginBottom: '0.5rem' }}>The Vision</h3>
-              <p style={{ color: '#E2E8F0', margin: 0 }}>
-                {brandIdentityData.corePurpose.vision}
-              </p>
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
+                <h3 className="text-white font-bold text-lg mb-2">The Vision</h3>
+                <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed">
+                  {brandIdentityData.corePurpose.vision}
+                </p>
+              </div>
             </div>
           </section>
 
           {/* Operational Pillars */}
-          <section style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-6 border-b border-accent/20 pb-4">
               3. {brandIdentityData.operationalPillars.title}
             </h2>
-            <p style={{ color: '#E2E8F0', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+            <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-10">
               {brandIdentityData.operationalPillars.description}
             </p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid sm:grid-cols-2 gap-6">
               {brandIdentityData.operationalPillars.pillars.map((pillar, idx) => (
-                <div key={idx} style={{ background: 'rgba(0,242,255,0.05)', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #00F2FF' }}>
-                  <h3 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '0.2rem' }}>{pillar.name}</h3>
-                  <span style={{ color: '#00F2FF', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block', marginBottom: '1rem' }}>{pillar.subtitle}</span>
-                  <p style={{ color: '#B0C4DE', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                <div key={idx} className="p-6 bg-accent/5 rounded-2xl border-l-4 border-accent transition-transform hover:-translate-y-1">
+                  <h3 className="text-white font-bold text-lg">{pillar.name}</h3>
+                  <span className="text-accent text-[10px] uppercase tracking-widest font-bold block mb-3">{pillar.subtitle}</span>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -81,45 +85,45 @@ const BrandIdentity = () => {
           </section>
 
           {/* Brand DNA */}
-          <section style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-8 border-b border-accent/20 pb-4">
               4. {brandIdentityData.brandDNA.title}
             </h2>
             
-            <div style={{ marginBottom: '2rem' }}>
-              <h3 style={{ color: '#FFF', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Identity Archetype</h3>
-              <p style={{ color: '#B0C4DE', fontStyle: 'italic', borderLeft: '4px solid #00F2FF', paddingLeft: '1rem', margin: 0 }}>
+            <div className="mb-10 p-6 bg-accent/5 border-l-4 border-accent rounded-r-xl">
+              <h3 className="text-white font-bold text-lg mb-2">Identity Archetype</h3>
+              <p className="text-accent font-bold text-xl sm:text-2xl italic leading-relaxed">
                 "{brandIdentityData.brandDNA.archetype}"
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+            <div className="grid sm:grid-cols-2 gap-4">
               {brandIdentityData.brandDNA.attributes.map((attr, idx) => (
-                <div key={idx} style={{ background: 'rgba(0,242,255,0.03)', padding: '1.25rem', borderRadius: '8px', border: '1px solid rgba(0,242,255,0.1)', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                  <span style={{ color: '#00F2FF', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>Attribute</span>
-                  <strong style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{attr.label}</strong>
-                  <div style={{ width: '20px', height: '1px', background: '#00F2FF', marginBottom: '0.5rem' }}></div>
-                  <span style={{ color: '#00F2FF', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>Strategic Definition</span>
-                  <p style={{ color: '#E2E8F0', margin: 0, fontSize: '0.95rem', lineHeight: 1.5 }}>{attr.value}</p>
+                <div key={idx} className="p-6 bg-white/5 rounded-xl border border-white/5 flex flex-col gap-1">
+                  <span className="text-accent text-[10px] font-bold uppercase tracking-widest opacity-60">Attribute</span>
+                  <strong className="text-white text-lg font-bold mb-2">{attr.label}</strong>
+                  <div className="w-10 h-[1px] bg-accent/40 mb-3"></div>
+                  <span className="text-accent text-[10px] font-bold uppercase tracking-widest opacity-60">Definition</span>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{attr.value}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Core Values / Ethics */}
-          <section style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          {/* Differentiators */}
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-6 border-b border-accent/20 pb-4">
               5. {brandIdentityData.differentiators.title}
             </h2>
-            <p style={{ color: '#E2E8F0', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+            <p className="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-10">
               {brandIdentityData.differentiators.description}
             </p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid sm:grid-cols-2 gap-6">
               {brandIdentityData.differentiators.items.map((item, idx) => (
-                <div key={idx} style={{ background: 'rgba(0,242,255,0.05)', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #00F2FF' }}>
-                  <h3 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{item.name}</h3>
-                  <p style={{ color: '#B0C4DE', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                <div key={idx} className="p-6 bg-white/5 rounded-2xl border-l-4 border-accent hover:bg-accent/5 transition-colors">
+                  <h3 className="text-white font-bold text-lg mb-2">{item.name}</h3>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -128,18 +132,18 @@ const BrandIdentity = () => {
           </section>
 
           {/* Ethics */}
-          <section style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginTop: '4rem' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1.5rem', borderBottom: '1px solid rgba(0,242,255,0.2)', paddingBottom: '0.5rem' }}>
+          <section className="mb-12 obsidian-glass p-8 sm:p-12 border-white/5">
+            <h2 className="text-accent text-xl sm:text-2xl font-bold mb-8 border-b border-accent/20 pb-4">
               6. {brandIdentityData.ethics.title}
             </h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8">
               {brandIdentityData.ethics.items.map((item, idx) => (
-                <div key={idx} style={{ padding: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                  <h3 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ color: '#00F2FF' }}>//</span> {item.name}
+                <div key={idx} className="pb-6 border-b border-white/5 last:border-0 group">
+                  <h3 className="text-white font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-accent transition-colors">
+                    <span className="text-accent text-xs">//</span> {item.name}
                   </h3>
-                  <p style={{ color: '#B0C4DE', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -148,11 +152,11 @@ const BrandIdentity = () => {
           </section>
 
           {/* Strategic Outlook */}
-          <section style={{ background: 'linear-gradient(135deg, rgba(0,242,255,0.1) 0%, rgba(11,28,56,0.5) 100%)', padding: '3rem', borderRadius: '12px', border: '1px solid rgba(0,242,255,0.2)', marginTop: '4rem', textAlign: 'center' }}>
-            <h2 style={{ color: '#00F2FF', marginBottom: '1rem' }}>
+          <section className="p-12 rounded-3xl bg-gradient-to-br from-accent/20 to-primary-bg border border-accent/30 text-center shadow-3xl shadow-accent/10">
+            <h2 className="text-accent text-2xl sm:text-3xl font-bold mb-6">
               7. {brandIdentityData.outlook.title}
             </h2>
-            <p style={{ color: '#E2E8F0', fontSize: '1.15rem', lineHeight: 1.8, margin: '0 auto', maxWidth: '600px' }}>
+            <p className="text-white text-lg sm:text-xl font-medium leading-relaxed italic max-w-2xl mx-auto">
               "{brandIdentityData.outlook.content}"
             </p>
           </section>

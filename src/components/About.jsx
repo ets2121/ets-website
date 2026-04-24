@@ -1,117 +1,102 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import * as Icons from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import aboutData from '../data/about.json';
 
 const About = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
   return (
-    <section id="about" className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Fancy Background Shapes */}
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        style={{ position: 'absolute', top: '-10%', left: '-5%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }}
-      />
-      <motion.div 
-        animate={{ rotate: -360 }}
-        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-        style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(49,130,206,0.05) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }}
-      />
-
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <style>
-          {`
-            .about-wrapper {
-              display: flex;
-              align-items: center;
-              gap: 4rem;
-            }
-            @media (max-width: 900px) {
-              .about-wrapper {
-                flex-direction: column;
-                text-align: center;
-              }
-              .about-text-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-              }
-              .about-stack {
-                justify-content: center;
-              }
-            }
-          `}
-        </style>
-        <div className="about-wrapper">
+    <section id="about" ref={ref} className="py-24 sm:py-32 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
           
-          {/* Image Side with Fancy Frame */}
+          {/* Text Side */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
-            style={{ flex: '1', display: 'flex', justifyContent: 'center', position: 'relative' }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div style={{ position: 'relative', width: '280px', height: '280px' }}>
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                style={{ 
-                  position: 'absolute', width: '100%', height: '100%', 
-                  border: '2px dashed rgba(0, 242, 255, 0.4)', borderRadius: '40% 60% 60% 40% / 40% 50% 50% 60%', 
-                  top: '-15px', left: '-15px', right: '-15px', bottom: '-15px',
-                  boxSizing: 'content-box', padding: '15px'
-                }}
-              />
-              <motion.img 
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                src={aboutData.image} 
-                alt={aboutData.altText} 
-                style={{ width: '100%', height: '100%', borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%', objectFit: 'cover', position: 'relative', zIndex: 2, boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
-              />
+            <span className="text-accent font-bold tracking-[0.2em] uppercase text-xs sm:text-sm">{aboutData.badgeText}</span>
+            <h2 className="mt-2 mb-8 text-3xl sm:text-4xl md:text-5xl">{aboutData.headline}</h2>
+            
+            {aboutData.paragraphs.map((p, pIdx) => (
+              <motion.p 
+                key={pIdx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 + (pIdx * 0.1) }}
+                className="mb-6 text-on-surface-variant text-base sm:text-lg leading-relaxed"
+              >
+                {p}
+              </motion.p>
+            ))}
+
+            <div className="mt-12">
+              <p className="text-white font-bold mb-6 text-xs sm:text-sm uppercase tracking-[0.2em]">Core Technology Stack</p>
+              <div className="flex flex-wrap gap-4">
+                {aboutData.stack.map((item, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className="obsidian-glass px-4 py-2.5 flex items-center gap-3 rounded-xl border-white/5 hover:border-accent/50 transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.4 + (idx * 0.05) }}
+                  >
+                    <img src={item.path} alt={item.name} className="w-5 h-5 grayscale group-hover:grayscale-0" />
+                    <span className="font-semibold text-sm text-white/90">{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Text Side */}
+          {/* Image Side with Fancy Shape */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
-            style={{ flex: '1.5' }}
-            className="about-text-content"
+            style={{ y: imageY }}
+            initial={{ opacity: 0, rotate: 5, scale: 0.9 }}
+            whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative lg:order-last order-first mb-12 lg:mb-0"
           >
-            <span style={{ color: '#00F2FF', fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>{aboutData.badgeText}</span>
-            <h2 style={{ marginBottom: '1.5rem', marginTop: 0 }}>{aboutData.headline}</h2>
+            <motion.div 
+              className="relative overflow-hidden p-2 bg-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
+              animate={{ 
+                clipPath: [
+                  "polygon(15% 0, 100% 5%, 85% 100%, 0 95%)",
+                  "polygon(5% 10%, 95% 0, 100% 90%, 10% 100%)",
+                  "polygon(15% 0, 100% 5%, 85% 100%, 0 95%)"
+                ]
+              }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            >
+              <img 
+                src={aboutData.image} 
+                alt={aboutData.altText} 
+                className="w-full aspect-square object-cover"
+              />
+            </motion.div>
             
-            {aboutData.paragraphs.map((p, pIdx) => (
-              <p key={pIdx} style={{ marginBottom: pIdx === aboutData.paragraphs.length - 1 ? '2.5rem' : '1.5rem', color: '#B0C4DE', lineHeight: 1.8 }}>
-                {p}
-              </p>
-            ))}
-
-            <div className="about-stack" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-              {aboutData.stack.map((item, idx) => (
-                <motion.div 
-                  whileHover={{ y: -5, color: '#00F2FF' }}
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '0.8rem',
-                    color: '#64748B',
-                    cursor: 'default',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <img src={item.path} alt={item.name} style={{ width: '32px', height: '32px', filter: 'grayscale(1) brightness(1.5)', transition: 'filter 0.3s' }} onMouseOver={e=>e.currentTarget.style.filter='grayscale(0)'} onMouseOut={e=>e.currentTarget.style.filter='grayscale(1) brightness(1.5)'} />
-                  <span style={{ fontWeight: 500, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{item.name}</span>
-                </motion.div>
-              ))}
-            </div>
+            <motion.div 
+              className="absolute -bottom-4 -right-4 sm:bottom-8 sm:-right-4 p-5 obsidian-glass border-accent/40 shadow-2xl z-20 flex flex-col items-center min-w-[120px]"
+              initial={{ x: 30, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <p className="text-accent font-extrabold text-4xl leading-none">5+</p>
+              <p className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center mt-1">Years of <br />Engineering</p>
+            </motion.div>
           </motion.div>
 
         </div>
