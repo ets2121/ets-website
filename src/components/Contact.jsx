@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import brandData from '../data/brand.json';
+import SectionMotion from './SectionMotion';
 
 const FacebookIcon = ({ size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -29,7 +30,8 @@ const GithubIcon = ({ size = 24 }) => (
 
 const Contact = ({ setCurrentPage }) => {
   return (
-    <footer id="contact" className="bg-primary-bg border-t border-white/5">
+    <footer id="contact" className="bg-primary-bg border-t border-white/5 relative overflow-hidden">
+      <SectionMotion type="squares" opacity={0.1} />
       <div className="container mx-auto px-6 pt-24 pb-12">
         
         <div className="grid lg:grid-cols-2 gap-20 mb-24 items-center">

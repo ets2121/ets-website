@@ -2,10 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import portfolioData from '../data/portfolio.json';
+import SectionMotion from './SectionMotion';
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="py-24">
+    <section id="portfolio" className="py-24 relative overflow-hidden">
+      <SectionMotion type="flow" opacity={0.15} />
       <div className="container mx-auto px-6">
         <div className="flex flex-col mb-16">
           <div className="flex justify-between items-end flex-wrap gap-8">
