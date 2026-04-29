@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroData from '../data/hero.json';
+import HeroBackground from './HeroBackground';
+import LiveMockup from './LiveMockup';
 
 const Hero = () => {
   const ref = useRef(null);
@@ -14,14 +16,16 @@ const Hero = () => {
       ref={ref}
       className="relative flex items-center overflow-hidden py-24 sm:py-32 lg:py-40"
     >
-      {/* Background with Parallax Image */}
+      {/* Background with Parallax Image and Motion Graphic */}
       <motion.div 
         className="absolute inset-x-0 -top-20 -bottom-20 z-0 bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(2, 19, 46, 0.95) 0%, rgba(2, 19, 46, 0.75) 100%), url(${heroData.backgroundImage})`,
           y: backgroundY
         }}
-      ></motion.div>
+      >
+        <HeroBackground />
+      </motion.div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
@@ -62,26 +66,8 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Visual Content (Mockup) */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: -1 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-[450px] mx-auto group mt-8 lg:mt-0"
-          >
-            <div className="absolute -inset-8 bg-accent/20 blur-[100px] rounded-full group-hover:bg-accent/30 transition-all duration-700"></div>
-            <motion.div 
-              className="obsidian-glass p-2 relative overflow-hidden shadow-2xl shadow-black/80"
-              whileHover={{ scale: 1.03, rotate: 1 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <img 
-                src={heroData.mockupImage.url} 
-                alt={heroData.mockupImage.alt} 
-                className="w-full rounded-lg block"
-              />
-            </motion.div>
-          </motion.div>
+          {/* Visual Content (Live Mockup with Integrated Motion Graphics) */}
+          <LiveMockup imageUrl={heroData.mockupImage.url} alt={heroData.mockupImage.alt} />
 
         </motion.div>
       </div>
