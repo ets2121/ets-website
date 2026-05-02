@@ -22,6 +22,12 @@
     background-attachment: fixed;
   }
 
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
   h1, h2, h3, h4 {
     @apply font-space font-bold text-white mb-4 leading-tight tracking-tight;
   }
@@ -29,12 +35,21 @@
 
 @layer components {
   .obsidian-glass {
-    @apply bg-surface/80 backdrop-blur-md border border-white/10 rounded-2xl;
+    @apply bg-surface/80 border border-white/10 rounded-2xl;
+    backdrop-filter: blur(12px);
+  }
+
+  @media (max-width: 768px) {
+    .obsidian-glass {
+      backdrop-filter: none;
+      @apply bg-surface/95;
+    }
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-[#e1fdff] to-accent;
   }
+
 
   .btn {
     @apply inline-flex items-center justify-center font-space font-bold transition-all duration-300 cursor-pointer;

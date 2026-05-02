@@ -75,8 +75,8 @@ const About = () => {
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              {/* Outer Cyber Glow */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-accent via-accent/5 to-accent/40 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"></div>
+              {/* Outer Cyber Glow - Hidden on mobile for performance */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-accent via-accent/5 to-accent/40 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 hidden md:block"></div>
               
               {/* Perspective Container */}
               <motion.div 

@@ -8,14 +8,31 @@ const SectionMotion = ({ type = 'hexes', opacity = 0.3 }) => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let width, height, animationFrameId;
+    let isVisible = true;
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const maxDPR = isMobile ? 1.5 : 2.0;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          animate();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
     const resize = () => {
       const container = canvas.parentElement;
       width = container.offsetWidth;
       height = container.offsetHeight;
-      canvas.width = width * window.devicePixelRatio;
-      canvas.height = height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDPR);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
     };
 
     const drawHex = (x, y, size, alpha) => {
@@ -36,13 +53,15 @@ const SectionMotion = ({ type = 'hexes', opacity = 0.3 }) => {
     let particles = [];
     const initParticles = () => {
       particles = [];
-      const count = type === 'hexes' ? 15 : 40;
+      let count = type === 'hexes' ? 15 : 40;
+      if (isMobile) count = Math.floor(count * 0.6);
+
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
           size: type === 'hexes' ? Math.random() * 40 + 20 : Math.random() * 3 + 1,
-          speed: Math.random() * 0.5 + 0.1,
+          speed: Math.random() * 0.4 + 0.1,
           angle: Math.random() * Math.PI * 2,
           opacity: Math.random() * 0.5 + 0.1,
           rotSpeed: (Math.random() - 0.5) * 0.02
@@ -51,6 +70,7 @@ const SectionMotion = ({ type = 'hexes', opacity = 0.3 }) => {
     };
 
     const animate = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach(p => {
@@ -70,12 +90,14 @@ const SectionMotion = ({ type = 'hexes', opacity = 0.3 }) => {
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
           
-          // Tail
-          ctx.strokeStyle = `rgba(0, 242, 255, ${p.opacity * 0.3})`;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p.x, p.y + p.size * 5);
-          ctx.stroke();
+          if (!isMobile) {
+            // Tail - Skip on mobile for performance
+            ctx.strokeStyle = `rgba(0, 242, 255, ${p.opacity * 0.3})`;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x, p.y + p.size * 5);
+            ctx.stroke();
+          }
         } else {
           // Digital square drift
           ctx.strokeStyle = `rgba(0, 242, 255, ${p.opacity})`;
@@ -88,14 +110,16 @@ const SectionMotion = ({ type = 'hexes', opacity = 0.3 }) => {
 
     resize();
     initParticles();
-    animate();
+    observer.observe(canvas);
 
     window.addEventListener('resize', resize);
     return () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, [type]);
+
 
   return (
     <canvas

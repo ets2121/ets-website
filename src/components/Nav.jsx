@@ -47,7 +47,7 @@ const Nav = ({ setCurrentPage }) => {
     <nav 
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
         scrolled 
-          ? 'py-3 backdrop-blur-2xl bg-primary-bg/90 shadow-2xl border-b border-accent/10' 
+          ? 'py-3 bg-primary-bg/95 md:backdrop-blur-2xl shadow-2xl border-b border-accent/10' 
           : 'py-6 bg-transparent border-b border-transparent'
       }`}
     >
@@ -122,7 +122,7 @@ const Nav = ({ setCurrentPage }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.4, cubicBezier: [0.22, 1, 0.36, 1] }}
-            className="fixed top-20 left-4 right-4 p-10 z-[999] bg-primary-bg/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_50px_100px_rgba(0,0,0,0.7)] flex flex-col items-center gap-8"
+            className="fixed top-20 left-4 right-4 p-10 z-[999] bg-primary-bg/98 md:backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_50px_100px_rgba(0,0,0,0.7)] flex flex-col items-center gap-8"
           >
             {brandData.navigation.map((item, idx) => (
               <motion.a 
