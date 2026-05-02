@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import brandData from '../data/brand.json';
+import logo from '../assets/logo/logo.png';
 
 const Nav = ({ setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,7 @@ const Nav = ({ setCurrentPage }) => {
           whileTap={{ scale: 0.98 }}
         >
           <img 
-            src={brandData.logo.default} 
+            src={logo} 
             alt={brandData.logo.altText} 
             className={`w-auto rounded-lg transition-all duration-500 ${
               scrolled ? 'h-9 border border-accent/20' : 'h-11 border border-white/10'

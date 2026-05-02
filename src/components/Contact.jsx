@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import brandData from '../data/brand.json';
+import logo from '../assets/logo/logo.png';
 import SectionMotion from './SectionMotion';
 
 const FacebookIcon = ({ size = 24 }) => (
@@ -111,7 +112,7 @@ const Contact = ({ setCurrentPage }) => {
               onClick={() => { setCurrentPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="flex items-center gap-3 mb-8 cursor-pointer group"
             >
-              <img src={brandData.logo.default} alt={brandData.logo.altText} className="h-8 w-auto rounded-md group-hover:scale-105 transition-transform" />
+              <img src={logo} alt={brandData.logo.altText} className="h-8 w-auto rounded-md group-hover:scale-105 transition-transform" />
               <span className="text-2xl font-bold text-white font-space">ETS</span>
             </div>
             <p className="text-on-surface-variant leading-relaxed text-sm max-w-xs">
