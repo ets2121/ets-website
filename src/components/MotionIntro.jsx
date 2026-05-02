@@ -9,16 +9,16 @@ const MotionIntro = ({ onComplete }) => {
   const [showSkip, setShowSkip] = useState(false);
   const [exiting, setExiting] = useState(false);
 
-  const TOTAL_DURATION = 18000; // 18 seconds — fast & punchy
-
+  const TOTAL_DURATION = 18000; // Virtual timeline duration
+  const SPEED_MULTIPLIER = 3.0; // Runs 3x faster (6 seconds total)
   const handleSkip = useCallback(() => {
     if (exiting) return;
     setExiting(true);
-    setTimeout(() => onComplete(), 800);
+    setTimeout(() => onComplete(), 300);
   }, [onComplete, exiting]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSkip(true), 1500);
+    const timer = setTimeout(() => setShowSkip(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -139,7 +139,8 @@ const MotionIntro = ({ onComplete }) => {
     startTimeRef.current = performance.now();
 
     const animate = (now) => {
-      const elapsed = now - startTimeRef.current;
+      const realElapsed = now - startTimeRef.current;
+      const elapsed = realElapsed * SPEED_MULTIPLIER;
       const t = Math.min(elapsed / TOTAL_DURATION, 1);
 
       if (elapsed < 2500) setPhase(0);
@@ -437,7 +438,7 @@ const MotionIntro = ({ onComplete }) => {
       // === AUTO-COMPLETE ===
       if (elapsed >= TOTAL_DURATION) {
         setExiting(true);
-        setTimeout(() => onComplete(), 800);
+        setTimeout(() => onComplete(), 300);
         return;
       }
 
@@ -458,7 +459,7 @@ const MotionIntro = ({ onComplete }) => {
           className="fixed inset-0 z-[9999]"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <canvas ref={canvasRef} className="absolute inset-0" />
 
@@ -495,7 +496,7 @@ const MotionIntro = ({ onComplete }) => {
           className="fixed inset-0 z-[9999] bg-primary-bg"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         />
       )}
     </AnimatePresence>

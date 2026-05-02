@@ -23,7 +23,7 @@ function App() {
         className="min-h-screen bg-primary-bg overflow-x-hidden body-glow relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: showIntro ? 0 : 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
       >
         <GlobalBackground />
         <Nav setCurrentPage={setCurrentPage} />
