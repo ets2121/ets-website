@@ -7,7 +7,8 @@ const GlobalBackground = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-
+    let width, height;
+    const particles = [];
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     const particleCount = isMobile ? 25 : 60;
     const maxDPR = isMobile ? 1.5 : 2.0;
@@ -20,6 +21,9 @@ const GlobalBackground = () => {
       canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
     };
+
+    resize();
+
 
     class Particle {
       constructor() {
@@ -104,7 +108,6 @@ const GlobalBackground = () => {
       requestAnimationFrame(animate);
     };
 
-    resize();
     window.addEventListener('resize', resize);
     animate();
 
